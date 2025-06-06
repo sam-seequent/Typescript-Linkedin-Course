@@ -1,7 +1,7 @@
-let x = { name: "Wruce Bayne" };
-x.id = 1234;
-
-
+// The record type allows you to add on properties that were not previously defined in the interface.
+// Allows you to create a type that has a fixed set of keys, but the values can be of any type.
+let x: Record<string, string | number> = { name: "Carol Weaver" };
+x.number = 123; // This is allowed because number is a valid type in the Record definition
 
 ////////////////////
 
@@ -25,9 +25,9 @@ interface Query {
     matches(val): boolean;
 }
 
-function searchContacts(contacts: Contact[], query) {
+function searchContacts(contacts: Contact[], query: Record<keyof Contact, Query>) {
     return contacts.filter(contact => {
-        for (const property of Object.keys(contact)) {
+        for (const property of Object.keys(contact) as (keyof Contact)[]) {
             // get the query object for this property
             const propertyQuery = query[property];
             // check to see if it matches
@@ -45,6 +45,6 @@ const filteredContacts = searchContacts(
     {
         id: { matches: (id) => id === 123 },
         name: { matches: (name) => name === "Carol Weaver" },
-        phoneNumber: { matches: (name) => name === "Carol Weaver" },
+        //Error fixed in next exercise
     }
 );
