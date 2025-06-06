@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
         "target": "esnext",
-        "noEmit": true
+        "noEmit": true,
+        //REQUIRED TO ENABLE DECORATORS
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
     },
     "include": ["src/**/*"]
 }
