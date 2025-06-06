@@ -26,7 +26,14 @@ interface Query {
     matches(val): boolean;
 }
 
-type ContactQuery = Record<keyof Contact, Query>
+//Now does not require all properties to be defined for the function call below that was causing an error previously with partial
+// Omit is used to remove properties from the type, thus address will never be allowed to be passed in as a query
+type ContactQuery = Omit<
+    Partial<Record<keyof Contact, Query>>,
+    "address" | "status"
+>
+// There exists another helper called Pick which allows you to pick specific properties from a type, works the same way as Omit but in reverse
+// There also exists another helper called Required which makes all properties required, and Readonly which makes all properties readonly
 
 function searchContacts(contacts: Contact[], query: ContactQuery) {
     return contacts.filter(contact => {
