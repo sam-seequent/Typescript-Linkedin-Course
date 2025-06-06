@@ -2,10 +2,9 @@
     "compilerOptions": {
         "allowJs": true,
         "checkJs": true,
-        //These two attributes above are used to enable type checking in JavaScript files.
         "outDir": "build",
         "target": "esnext",
-        "noEmit": true
+        // "noEmit": true
     },
     "include": ["src/**/*"]
 }

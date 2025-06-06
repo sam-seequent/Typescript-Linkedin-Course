@@ -1,8 +1,14 @@
+// This is a TypeScript configuration required in any TypeScript project.
 {
     "compilerOptions": {
+        //Sets the directory where the compiled JavaScript files will be placed.
         "outDir": "build",
+        // Sets the module system to be used in the compiled JavaScript files.
         "target": "esnext",
+        // Makes sure that no JS files are emitted during the compilation process.
         "noEmit": true
     },
     "include": ["src/**/*"]
 }
+//Note the package.json includes the typescript dependency and it also defines a script to run the TypeScript compiler.
+// The script can be run using the command: npm run build
